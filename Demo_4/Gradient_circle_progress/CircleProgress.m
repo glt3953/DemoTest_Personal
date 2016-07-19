@@ -36,16 +36,17 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
-//    _trackLayer = [CAShapeLayer layer];//创建一个track shape layer
-//    _trackLayer.frame = self.bounds;
-//    [self.layer addSublayer:_trackLayer];
-//    _trackLayer.fillColor = [[UIColor clearColor] CGColor];
-//    _trackLayer.strokeColor = [[UIColor redColor] CGColor];//指定path的渲染颜色
-//    _trackLayer.opacity = 0.25; //背景同学你就甘心做背景吧，不要太明显了，透明度小一点
-//    _trackLayer.lineCap = kCALineCapRound;//指定线的边缘是圆的
-//    _trackLayer.lineWidth = PROGRESS_LINE_WIDTH;//线的宽度
-    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(40, 40) radius:(PROGREESS_WIDTH-PROGRESS_LINE_WIDTH)/2 startAngle:degreesToRadians(0) endAngle:degreesToRadians(360) clockwise:YES];//上面说明过了用来构建圆形
-//    _trackLayer.path =[path CGPath]; //把path传递給layer，然后layer会处理相应的渲染，整个逻辑和CoreGraph是一致的。
+    _trackLayer = [CAShapeLayer layer];//创建一个track shape layer
+    _trackLayer.frame = self.bounds;
+    [self.layer addSublayer:_trackLayer];
+    _trackLayer.fillColor = [[UIColor clearColor] CGColor];
+    _trackLayer.strokeColor = [[UIColor blueColor] CGColor];//指定path的渲染颜色
+    _trackLayer.opacity = 0.25; //背景同学你就甘心做背景吧，不要太明显了，透明度小一点
+    _trackLayer.lineCap = kCALineCapRound;//指定线的边缘是圆的
+    _trackLayer.lineWidth = PROGRESS_LINE_WIDTH;//线的宽度
+    //画出整个轨道，这个圆形轨道是从-210度的角度到30度。
+    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(40, 40) radius:(PROGREESS_WIDTH-PROGRESS_LINE_WIDTH)/2 startAngle:degreesToRadians(-210) endAngle:degreesToRadians(30) clockwise:YES];//上面说明过了用来构建圆形
+    _trackLayer.path = [path CGPath]; //把path传递給layer，然后layer会处理相应的渲染，整个逻辑和CoreGraph是一致的。
     
     
 //    UIBezierPath *path = [UIBezierPath bezierPathWithArcCenter:CGPointMake(40, 40) radius:(PROGREESS_WIDTH-PROGRESS_LINE_WIDTH)/2 startAngle:degreesToRadians(-210) endAngle:degreesToRadians(30) clockwise:YES];
